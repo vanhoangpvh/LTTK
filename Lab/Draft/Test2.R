@@ -1,28 +1,17 @@
-A = matrix(
-  data = 1:100,
-  nrow = 10, ncol = 10, byrow = TRUE
-)
-A
-diag(A)
+data = rep(c(155,165,175,185,195,205),c(3,9,11,3,2,1))
 
 
-matrix_v = matrix(
-  data = 1:10,
-  nrow = 10, ncol = 1, byrow = TRUE
-)
+choresterolTestTwoSided = t.test(data,alternative = "two.sided", conf.level = 0.99, mu = 175)
+choresterolTest$conf.int
 
-result = solve(t(A)%*%A+diag(10)) %*% t(A) %*% matrix_v
-result
+HutThuoc = c(124,131,134,133,136,125,125,118,133,127,135)
+KhongHutThuoc = c(130,116,122,127,128,135,129,120,118,122,122,115,123)
 
-diag(10)
+huyetapTest = t.test(HutThuoc,KhongHutThuoc,alternative = "two.sided", var.equal = TRUE, mu = 0, conf.level = 0.95)
+huyetapTest
 
-df = data.frame(
-  x = 1:10,
-  y = 11:20
-)
+huyetapTestLess = t.test(HutThuoc,KhongHutThuoc,alternative = "greater", var.equal = TRUE, mu = 0)
+huyetapTestLess
 
-df$x
-
-df[df$y > 15,]
-df[df$x %in% c(1,2,3,4,5),]
+huyetapTest$conf.int
 
